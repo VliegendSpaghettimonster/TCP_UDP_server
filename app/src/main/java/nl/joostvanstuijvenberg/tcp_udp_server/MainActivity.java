@@ -20,41 +20,49 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // IP-adres (hostnaam) en poortnummer.
         ip = (EditText)findViewById(R.id.edtIP);
-        ip.setText("127.0.0.1"); // veranderen in actuele ip-adres
+        ip.setText("10.0.2.2"); // veranderen in actuele ip-adres
         port = (EditText)findViewById(R.id.edtPort);
         port.setText("9876");
 
-        final Switch s = (Switch)findViewById(R.id.swtProtocol);
-        s.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        // Keuze client of server.
+        final Switch s1 = (Switch)findViewById(R.id.swtClientServer);
+        s1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                s.setText(isChecked ? "UDP" : "TCP");
+                s1.setText(isChecked ? "Server" : "Client");
             }
         });
 
-        Button b1 = (Button)findViewById(R.id.btnClient);
+        // Keuze TCP of UDP.
+        final Switch s2 = (Switch)findViewById(R.id.swtProtocol);
+        s2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                s2.setText(isChecked ? "UDP" : "TCP");
+            }
+        });
+
+        // Startknop.
+        Button b1 = (Button)findViewById(R.id.btnStart);
         b1.setOnClickListener(new Button.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), ClientActivity.class);
+
+                // Bepaal welke Strategy de client-functionaliteit gaat implementeren.
+                Class client;
+                if (s1.getText().toString().equals("Client"))
+                    client = ClientActivity.class;
+                else
+                    client = ServerActivity.class;
+
+                // Start de juiste Activity met de gevraagde verbindingseigenschappen.
+                Intent i = new Intent(getApplicationContext(), client);
                 i.putExtra("IPADDRESS", ip.getText().toString());
                 i.putExtra("PORT", port.getText().toString());
-                i.putExtra("PROTOCOL", s.getText().toString());
-                startActivity(i);
-            }
-        });
-
-        Button b2 = (Button)findViewById(R.id.btnServer);
-        b2.setOnClickListener(new Button.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), ServerActivity.class);
-                i.putExtra("IPADDRESS", ip.getText().toString());
-                i.putExtra("PORT", port.getText().toString());
-                i.putExtra("PROTOCOL", s.getText().toString());
+                i.putExtra("PROTOCOL", s2.getText().toString());
                 startActivity(i);
             }
         });

@@ -11,12 +11,12 @@
         android:layout_height="100dp" />
 
     <TextView
-        android:id="@+id/received"
+        android:id="@+id/txvReceived"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <EditText
-        android:id="@+id/sent"
+        android:id="@+id/edtSendData"
         android:layout_width="match_parent"
         android:layout_height="100dp" />
 

@@ -25,28 +25,37 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Switch
+                android:id="@+id/swtClientServer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="Client"
+                android:textOff="Client"
+                android:textOn="Server" />
+
+            <Switch
+                android:id="@+id/swtProtocol"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="TCP"
+                android:textOff="TCP"
+                android:textOn="UDP" />
+
+        </LinearLayout>
+
         <Button
-            android:id="@+id/btnClient"
+            android:id="@+id/btnStart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:text="Client" />
-
-        <Button
-            android:id="@+id/btnServer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:text="Server" />
-
-        <Switch
-            android:id="@+id/swtProtocol"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="false"
-            android:text="TCP"
-            android:textOff="TCP"
-            android:textOn="UDP" />
+            android:text="Start" />
 
     </LinearLayout>
 
