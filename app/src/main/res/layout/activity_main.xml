@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_alignEnd="@+id/button"
+    android:layout_alignParentTop="true"
+    android:layout_alignRight="@+id/button"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/edtIP"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/edtPort"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:numeric="integer|decimal" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnClient"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Client" />
+
+        <Button
+            android:id="@+id/btnServer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Server" />
+
+        <Switch
+            android:id="@+id/swtProtocol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="TCP"
+            android:textOff="TCP"
+            android:textOn="UDP" />
+
+    </LinearLayout>
+
+</LinearLayout>
